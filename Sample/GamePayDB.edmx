@@ -1,0 +1,1978 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GamePayDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="record_AllResendOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OldOrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="RuleInfo" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="record_Annc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="Detail" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="record_Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaNum" Type="bigint" Nullable="false" />
+          <Property Name="AreaKey" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ClientIp" Type="varchar" MaxLength="100" />
+          <Property Name="ClientMobile" Type="varchar" MaxLength="50" />
+          <Property Name="GameDir" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="RechargeDir" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="AddedBy" Type="int" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="OpenTime" Type="datetime" Nullable="false" />
+          <Property Name="EngineID" Type="tinyint" Nullable="false" />
+          <Property Name="AfterYuanbaoScript" Type="varchar" MaxLength="4000" />
+          <Property Name="AttachBonus" Type="varchar" MaxLength="50" />
+          <Property Name="ScoreBonus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="record_AttachBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cmd" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rate" Type="bigint" Nullable="false" />
+          <Property Name="BonusTypeStr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsCurrency" Type="bit" Nullable="false" />
+          <Property Name="ShowMsg" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_BasicBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="PayWayID" Type="smallint" Nullable="false" />
+          <Property Name="BonusStart" Type="smallint" Nullable="false" />
+          <Property Name="BonusPercent" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_CashFlow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="CurrentIncome" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="CurrentBalance" Type="decimal" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="RecordType" Type="tinyint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="record_CashOutBatch">
+          <Key>
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="BatchNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BatchNum" Type="smallint" Nullable="false" />
+          <Property Name="BatchFee" Type="decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="IsAuto" Type="bit" Nullable="false" />
+          <Property Name="AppliedUserName" Type="varchar" MaxLength="50" />
+          <Property Name="SubmitedTime" Type="datetime" />
+          <Property Name="StatusId" Type="tinyint" Nullable="false" />
+          <Property Name="TargetTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="record_CashOutOrder">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BatchNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ReceiverEmail" Type="varchar" MaxLength="50" />
+          <Property Name="ReceiverName" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="SuccessTag" Type="varchar" MaxLength="500" />
+          <Property Name="SuccessMsg" Type="varchar" MaxLength="500" />
+          <Property Name="FailTag" Type="varchar" MaxLength="500" />
+          <Property Name="FailMsg" Type="varchar" MaxLength="500" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+          <Property Name="TradeNo" Type="varchar" MaxLength="50" />
+          <Property Name="CompleteTime" Type="datetime" />
+          <Property Name="AlipayAccount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AlipayRealName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="record_ExBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="Start" Type="smallint" Nullable="false" />
+          <Property Name="Bonus" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_FloatImg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_GoodsBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="GoodsName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GoodsVariableName" Type="varchar" MaxLength="50" />
+          <Property Name="CmdName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GoodsCount" Type="bigint" Nullable="false" />
+          <Property Name="Start" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupNum" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RechargeTip" Type="varchar" MaxLength="200" />
+          <Property Name="RechargeLink" Type="varchar" MaxLength="200" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="AddedBy" Type="int" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+          <Property Name="IsExpanded" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="ClientIp" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Npc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaId" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="100" />
+          <Property Name="Locations" Type="varchar" MaxLength="100" />
+          <Property Name="Num1" Type="smallint" Nullable="false" />
+          <Property Name="Apperance" Type="smallint" Nullable="false" />
+          <Property Name="Num3" Type="smallint" Nullable="false" />
+          <Property Name="Num4" Type="smallint" Nullable="false" />
+          <Property Name="Num5" Type="smallint" Nullable="false" />
+          <Property Name="Num6" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupNum" Type="int" Nullable="false" />
+          <Property Name="OperationTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="OperationWayId" Type="tinyint" Nullable="false" />
+          <Property Name="ClientIp" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SourceLink" Type="varchar" MaxLength="200" />
+          <Property Name="ForeignKeyId" Type="int" />
+          <Property Name="Mark" Type="varchar" MaxLength="1000" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="GoodsName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="TotalFee" Type="int" Nullable="false" />
+          <Property Name="CanCashOutFee" Type="decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="PayWayID" Type="smallint" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="PaidAccount" Type="varchar" MaxLength="100" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="PayTime" Type="datetime" />
+          <Property Name="TradeNo" Type="varchar" MaxLength="200" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="GameAccount" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="BuyerQQ" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BuyerEmail" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BuyerMobile" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_OrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CmdName" Type="varchar" MaxLength="50" />
+          <Property Name="Count" Type="bigint" Nullable="false" />
+          <Property Name="ItemTypeId" Type="tinyint" Nullable="false" />
+          <Property Name="OrderType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_PlayerMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlayerID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Msg" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Reply" Type="varchar" MaxLength="1000" />
+          <Property Name="IP" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="QQ" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="MsgTypeID" Type="tinyint" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Refund">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="RefundOrderNum" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="AcceptTime" Type="datetime" />
+          <Property Name="RefundFee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="RefundStatus" Type="tinyint" Nullable="false" />
+          <Property Name="FeeArrivalTime" Type="datetime" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+          <Property Name="TradeNo" Type="varchar" MaxLength="200" />
+          <Property Name="ErrMsg" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="record_ScoreBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaID" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rate" Type="bigint" Nullable="false" />
+          <Property Name="BonusTypeStr" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dir" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="record_SingleResendOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaId" Type="bigint" Nullable="false" />
+          <Property Name="PayWayId" Type="smallint" Nullable="false" />
+          <Property Name="OrderNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TotalFee" Type="smallint" Nullable="false" />
+          <Property Name="GameAccount" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddedBy" Type="int" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="RuleInfo" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sys_Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_ErrorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Source" Type="varchar" MaxLength="200" />
+          <Property Name="Url" Type="varchar" MaxLength="1000" />
+          <Property Name="StackTrace" Type="varchar(max)" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="LoginId" Type="varchar" MaxLength="100" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_LoginWhiteList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParentId" Type="int" Nullable="false" />
+          <Property Name="TreeId" Type="varchar" MaxLength="200" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="200" />
+          <Property Name="IsAdminMenu" Type="bit" Nullable="false" />
+          <Property Name="NeedSPwd" Type="bit" Nullable="false" />
+          <Property Name="Sort" Type="smallint" Nullable="false" />
+          <Property Name="ShowOnTop" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_MerchantFeeRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PayWayID" Type="smallint" Nullable="false" />
+          <Property Name="FeeRate" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_PayAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+          <Property Name="MerId" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="AppId" Type="varchar" MaxLength="200" />
+          <Property Name="Key" Type="varchar" MaxLength="200" />
+          <Property Name="Account" Type="varchar" MaxLength="200" />
+          <Property Name="SellerName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sys_Theme">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ThemeType" Type="tinyint" Nullable="false" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="200" />
+          <Property Name="ViewText" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sys_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="SPassword" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="RealName" Type="varchar" MaxLength="50" />
+          <Property Name="AlipayAccount" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="AddedTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" Nullable="false" />
+          <Property Name="UserKey" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="BankCodeId" Type="smallint" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="30" />
+          <Property Name="BankAccountName" Type="varchar" MaxLength="30" />
+          <Property Name="BankCertId" Type="varchar" MaxLength="50" />
+          <Property Name="ManageThemeId" Type="tinyint" Nullable="false" />
+          <Property Name="RechargeThemeId" Type="tinyint" Nullable="false" />
+          <Property Name="BackGroundImgUrl" Type="varchar" MaxLength="200" />
+          <Property Name="PageSize" Type="tinyint" Nullable="false" />
+          <Property Name="RequireQQ" Type="tinyint" Nullable="false" />
+          <Property Name="RequireEmail" Type="tinyint" Nullable="false" />
+          <Property Name="RequireMobile" Type="tinyint" Nullable="false" />
+          <Property Name="ShowMsgBoard" Type="bit" Nullable="false" />
+          <Property Name="ShowServiceQQ" Type="bit" Nullable="false" />
+          <Property Name="ServiceQQ" Type="varchar" MaxLength="50" />
+          <Property Name="RechargeMsg" Type="varchar" MaxLength="500" />
+          <Property Name="MinRechargeAmount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_UserAccount">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TradeCount" Type="int" Nullable="false" />
+          <Property Name="TurnOver" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Income" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_BankCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Bonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="type_CashOutBatchStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="type_CashOutTarget">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="200" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_CashOutTransWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="200" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_CashRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="type_Engine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="500" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_FloatHtml">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Html" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Sort" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Gateway">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="200" />
+          <Property Name="ExePath" Type="varchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Msg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_OperationWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“GamePayDB.dbo.type_Order”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="type_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_OrderStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Pay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_PayWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ViewText" Type="varchar" MaxLength="50" />
+          <Property Name="LinkUrl" Type="varchar" MaxLength="200" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="FeeRate" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Sort" Type="smallint" Nullable="false" />
+          <Property Name="PayTypeId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_RefundStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mark" Type="varchar" MaxLength="1000" />
+          <Property Name="EngineID" Type="tinyint" Nullable="false" />
+          <Property Name="CommonScript" Type="varchar(max)" />
+          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsAppend" Type="bit" Nullable="false" />
+          <Property Name="NeedTxtFileToRead" Type="bit" Nullable="false" />
+          <Property Name="NeedTxtFileToSave" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_UserStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_YeepayBankId">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="smallint" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GamePayDBModelStoreContainer">
+          <EntitySet Name="record_AllResendOrder" EntityType="Self.record_AllResendOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Annc" EntityType="Self.record_Annc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Area" EntityType="Self.record_Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_AttachBonus" EntityType="Self.record_AttachBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_BasicBonus" EntityType="Self.record_BasicBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_CashFlow" EntityType="Self.record_CashFlow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_CashOutBatch" EntityType="Self.record_CashOutBatch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_CashOutOrder" EntityType="Self.record_CashOutOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_ExBonus" EntityType="Self.record_ExBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_FloatImg" EntityType="Self.record_FloatImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_GoodsBonus" EntityType="Self.record_GoodsBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Group" EntityType="Self.record_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Login" EntityType="Self.record_Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Npc" EntityType="Self.record_Npc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Operation" EntityType="Self.record_Operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Order" EntityType="Self.record_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_OrderItem" EntityType="Self.record_OrderItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_PlayerMsg" EntityType="Self.record_PlayerMsg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_Refund" EntityType="Self.record_Refund" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_ScoreBonus" EntityType="Self.record_ScoreBonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="record_SingleResendOrder" EntityType="Self.record_SingleResendOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_Config" EntityType="Self.sys_Config" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_ErrorLog" EntityType="Self.sys_ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_LoginWhiteList" EntityType="Self.sys_LoginWhiteList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_Menu" EntityType="Self.sys_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_MerchantFeeRate" EntityType="Self.sys_MerchantFeeRate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_PayAccount" EntityType="Self.sys_PayAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_Theme" EntityType="Self.sys_Theme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_User" EntityType="Self.sys_User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sys_UserAccount" EntityType="Self.sys_UserAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_BankCode" EntityType="Self.type_BankCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Bonus" EntityType="Self.type_Bonus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_CashOutBatchStatus" EntityType="Self.type_CashOutBatchStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_CashOutTarget" EntityType="Self.type_CashOutTarget" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_CashOutTransWay" EntityType="Self.type_CashOutTransWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_CashRecord" EntityType="Self.type_CashRecord" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Engine" EntityType="Self.type_Engine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_FloatHtml" EntityType="Self.type_FloatHtml" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Gateway" EntityType="Self.type_Gateway" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Item" EntityType="Self.type_Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Msg" EntityType="Self.type_Msg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Operation" EntityType="Self.type_Operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_OperationWay" EntityType="Self.type_OperationWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_OrderStatus" EntityType="Self.type_OrderStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Pay" EntityType="Self.type_Pay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_PayWay" EntityType="Self.type_PayWay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_RefundStatus" EntityType="Self.type_RefundStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Script" EntityType="Self.type_Script" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_UserStatus" EntityType="Self.type_UserStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_YeepayBankId" EntityType="Self.type_YeepayBankId" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_Order" EntityType="Self.type_Order" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [type_Order].[ID] AS [ID], 
+    [type_Order].[Name] AS [Name]
+    FROM [dbo].[type_Order] AS [type_Order]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GamePayDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="record_AllResendOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OldOrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="RuleInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_Annc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaNum" Type="Int64" Nullable="false" />
+          <Property Name="AreaKey" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ClientIp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ClientMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GameDir" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RechargeDir" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="OpenTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EngineID" Type="Byte" Nullable="false" />
+          <Property Name="AfterYuanbaoScript" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="AttachBonus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ScoreBonus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_AttachBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cmd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rate" Type="Int64" Nullable="false" />
+          <Property Name="BonusTypeStr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsCurrency" Type="Boolean" Nullable="false" />
+          <Property Name="ShowMsg" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_BasicBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="PayWayID" Type="Int16" Nullable="false" />
+          <Property Name="BonusStart" Type="Int16" Nullable="false" />
+          <Property Name="BonusPercent" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_CashFlow">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CurrentIncome" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="CurrentBalance" Type="Decimal" Precision="12" Scale="3" Nullable="false" />
+          <Property Name="RecordType" Type="Byte" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_CashOutBatch">
+          <Key>
+            <PropertyRef Name="BatchNo" />
+          </Key>
+          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BatchNum" Type="Int16" Nullable="false" />
+          <Property Name="BatchFee" Type="Decimal" Precision="15" Scale="3" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAuto" Type="Boolean" Nullable="false" />
+          <Property Name="AppliedUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SubmitedTime" Type="DateTime" Precision="3" />
+          <Property Name="StatusId" Type="Byte" Nullable="false" />
+          <Property Name="TargetTypeId" Type="Byte" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_CashOutOrder">
+          <Key>
+            <PropertyRef Name="OrderNo" />
+          </Key>
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BatchNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ReceiverEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReceiverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="13" Scale="3" Nullable="false" />
+          <Property Name="SuccessTag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SuccessMsg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FailTag" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FailMsg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TradeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompleteTime" Type="DateTime" Precision="3" />
+          <Property Name="AlipayAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AlipayRealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_ExBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="Int16" Nullable="false" />
+          <Property Name="Bonus" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_FloatImg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_GoodsBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="GoodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GoodsVariableName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CmdName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GoodsCount" Type="Int64" Nullable="false" />
+          <Property Name="Start" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Group">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupNum" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RechargeTip" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="RechargeLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+          <Property Name="IsExpanded" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Login">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ClientIp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Npc">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaId" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Locations" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Num1" Type="Int16" Nullable="false" />
+          <Property Name="Apperance" Type="Int16" Nullable="false" />
+          <Property Name="Num3" Type="Int16" Nullable="false" />
+          <Property Name="Num4" Type="Int16" Nullable="false" />
+          <Property Name="Num5" Type="Int16" Nullable="false" />
+          <Property Name="Num6" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupNum" Type="Int32" Nullable="false" />
+          <Property Name="OperationTypeId" Type="Byte" Nullable="false" />
+          <Property Name="OperationWayId" Type="Byte" Nullable="false" />
+          <Property Name="ClientIp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SourceLink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ForeignKeyId" Type="Int32" />
+          <Property Name="Mark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="record_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GoodsName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalFee" Type="Int32" Nullable="false" />
+          <Property Name="CanCashOutFee" Type="Decimal" Precision="10" Scale="3" Nullable="false" />
+          <Property Name="PayWayID" Type="Int16" Nullable="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="PaidAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PayTime" Type="DateTime" Precision="3" />
+          <Property Name="TradeNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="GameAccount" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BuyerQQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BuyerEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BuyerMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_OrderItem">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CmdName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Count" Type="Int64" Nullable="false" />
+          <Property Name="ItemTypeId" Type="Byte" Nullable="false" />
+          <Property Name="OrderType" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_PlayerMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlayerID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Msg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Reply" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MsgTypeID" Type="Byte" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="record_Refund">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="RefundOrderNum" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AcceptTime" Type="DateTime" Precision="3" />
+          <Property Name="RefundFee" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="RefundStatus" Type="Byte" Nullable="false" />
+          <Property Name="FeeArrivalTime" Type="DateTime" Precision="3" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TradeNo" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ErrMsg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_ScoreBonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaID" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rate" Type="Int64" Nullable="false" />
+          <Property Name="BonusTypeStr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Dir" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="record_SingleResendOrder">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaId" Type="Int64" Nullable="false" />
+          <Property Name="PayWayId" Type="Int16" Nullable="false" />
+          <Property Name="OrderNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalFee" Type="Int16" Nullable="false" />
+          <Property Name="GameAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AddedBy" Type="Int32" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="RuleInfo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_Config">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_ErrorLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Source" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LoginId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_LoginWhiteList">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentId" Type="Int32" Nullable="false" />
+          <Property Name="TreeId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdminMenu" Type="Boolean" Nullable="false" />
+          <Property Name="NeedSPwd" Type="Boolean" Nullable="false" />
+          <Property Name="Sort" Type="Int16" Nullable="false" />
+          <Property Name="ShowOnTop" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_MerchantFeeRate">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PayWayID" Type="Int16" Nullable="false" />
+          <Property Name="FeeRate" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_PayAccount">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MerId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Key" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SellerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_Theme">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ThemeType" Type="Byte" Nullable="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ViewText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sys_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginId" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RealName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AlipayAccount" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="AddedTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="UserKey" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BankCodeId" Type="Int16" />
+          <Property Name="BankAccount" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccountName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BankCertId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ManageThemeId" Type="Byte" Nullable="false" />
+          <Property Name="RechargeThemeId" Type="Byte" Nullable="false" />
+          <Property Name="BackGroundImgUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PageSize" Type="Byte" Nullable="false" />
+          <Property Name="RequireQQ" Type="Byte" Nullable="false" />
+          <Property Name="RequireEmail" Type="Byte" Nullable="false" />
+          <Property Name="RequireMobile" Type="Byte" Nullable="false" />
+          <Property Name="ShowMsgBoard" Type="Boolean" Nullable="false" />
+          <Property Name="ShowServiceQQ" Type="Boolean" Nullable="false" />
+          <Property Name="ServiceQQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RechargeMsg" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MinRechargeAmount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sys_UserAccount">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="TradeCount" Type="Int32" Nullable="false" />
+          <Property Name="TurnOver" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Income" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_BankCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Bonus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="type_CashOutBatchStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="type_CashOutTarget">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_CashOutTransWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_CashRecord">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="type_Engine">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_FloatHtml">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Html" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sort" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Gateway">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ExePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Item">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Msg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Operation">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_OperationWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_OrderStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Pay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_PayWay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ViewText" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LinkUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="FeeRate" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Sort" Type="Int16" Nullable="false" />
+          <Property Name="PayTypeId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_RefundStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Script">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Mark" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="EngineID" Type="Byte" Nullable="false" />
+          <Property Name="CommonScript" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FilePath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsAppend" Type="Boolean" Nullable="false" />
+          <Property Name="NeedTxtFileToRead" Type="Boolean" Nullable="false" />
+          <Property Name="NeedTxtFileToSave" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_UserStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_YeepayBankId">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int16" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_Order">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="GamePayDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="record_AllResendOrder" EntityType="Self.record_AllResendOrder" />
+          <EntitySet Name="record_Annc" EntityType="Self.record_Annc" />
+          <EntitySet Name="record_Area" EntityType="Self.record_Area" />
+          <EntitySet Name="record_AttachBonus" EntityType="Self.record_AttachBonus" />
+          <EntitySet Name="record_BasicBonus" EntityType="Self.record_BasicBonus" />
+          <EntitySet Name="record_CashFlow" EntityType="Self.record_CashFlow" />
+          <EntitySet Name="record_CashOutBatch" EntityType="Self.record_CashOutBatch" />
+          <EntitySet Name="record_CashOutOrder" EntityType="Self.record_CashOutOrder" />
+          <EntitySet Name="record_ExBonus" EntityType="Self.record_ExBonus" />
+          <EntitySet Name="record_FloatImg" EntityType="Self.record_FloatImg" />
+          <EntitySet Name="record_GoodsBonus" EntityType="Self.record_GoodsBonus" />
+          <EntitySet Name="record_Group" EntityType="Self.record_Group" />
+          <EntitySet Name="record_Login" EntityType="Self.record_Login" />
+          <EntitySet Name="record_Npc" EntityType="Self.record_Npc" />
+          <EntitySet Name="record_Operation" EntityType="Self.record_Operation" />
+          <EntitySet Name="record_Order" EntityType="Self.record_Order" />
+          <EntitySet Name="record_OrderItem" EntityType="Self.record_OrderItem" />
+          <EntitySet Name="record_PlayerMsg" EntityType="Self.record_PlayerMsg" />
+          <EntitySet Name="record_Refund" EntityType="Self.record_Refund" />
+          <EntitySet Name="record_ScoreBonus" EntityType="Self.record_ScoreBonus" />
+          <EntitySet Name="record_SingleResendOrder" EntityType="Self.record_SingleResendOrder" />
+          <EntitySet Name="sys_Config" EntityType="Self.sys_Config" />
+          <EntitySet Name="sys_ErrorLog" EntityType="Self.sys_ErrorLog" />
+          <EntitySet Name="sys_LoginWhiteList" EntityType="Self.sys_LoginWhiteList" />
+          <EntitySet Name="sys_Menu" EntityType="Self.sys_Menu" />
+          <EntitySet Name="sys_MerchantFeeRate" EntityType="Self.sys_MerchantFeeRate" />
+          <EntitySet Name="sys_PayAccount" EntityType="Self.sys_PayAccount" />
+          <EntitySet Name="sys_Theme" EntityType="Self.sys_Theme" />
+          <EntitySet Name="sys_User" EntityType="Self.sys_User" />
+          <EntitySet Name="sys_UserAccount" EntityType="Self.sys_UserAccount" />
+          <EntitySet Name="type_BankCode" EntityType="Self.type_BankCode" />
+          <EntitySet Name="type_Bonus" EntityType="Self.type_Bonus" />
+          <EntitySet Name="type_CashOutBatchStatus" EntityType="Self.type_CashOutBatchStatus" />
+          <EntitySet Name="type_CashOutTarget" EntityType="Self.type_CashOutTarget" />
+          <EntitySet Name="type_CashOutTransWay" EntityType="Self.type_CashOutTransWay" />
+          <EntitySet Name="type_CashRecord" EntityType="Self.type_CashRecord" />
+          <EntitySet Name="type_Engine" EntityType="Self.type_Engine" />
+          <EntitySet Name="type_FloatHtml" EntityType="Self.type_FloatHtml" />
+          <EntitySet Name="type_Gateway" EntityType="Self.type_Gateway" />
+          <EntitySet Name="type_Item" EntityType="Self.type_Item" />
+          <EntitySet Name="type_Msg" EntityType="Self.type_Msg" />
+          <EntitySet Name="type_Operation" EntityType="Self.type_Operation" />
+          <EntitySet Name="type_OperationWay" EntityType="Self.type_OperationWay" />
+          <EntitySet Name="type_OrderStatus" EntityType="Self.type_OrderStatus" />
+          <EntitySet Name="type_Pay" EntityType="Self.type_Pay" />
+          <EntitySet Name="type_PayWay" EntityType="Self.type_PayWay" />
+          <EntitySet Name="type_RefundStatus" EntityType="Self.type_RefundStatus" />
+          <EntitySet Name="type_Script" EntityType="Self.type_Script" />
+          <EntitySet Name="type_UserStatus" EntityType="Self.type_UserStatus" />
+          <EntitySet Name="type_YeepayBankId" EntityType="Self.type_YeepayBankId" />
+          <EntitySet Name="type_Order" EntityType="Self.type_Order" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GamePayDBModelStoreContainer" CdmEntityContainer="GamePayDBEntities">
+          <EntitySetMapping Name="record_AllResendOrder">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_AllResendOrder">
+              <MappingFragment StoreEntitySet="record_AllResendOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="OldOrderNo" ColumnName="OldOrderNo" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RuleInfo" ColumnName="RuleInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Annc">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Annc">
+              <MappingFragment StoreEntitySet="record_Annc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Area">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Area">
+              <MappingFragment StoreEntitySet="record_Area">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaNum" ColumnName="AreaNum" />
+                <ScalarProperty Name="AreaKey" ColumnName="AreaKey" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ClientIp" ColumnName="ClientIp" />
+                <ScalarProperty Name="ClientMobile" ColumnName="ClientMobile" />
+                <ScalarProperty Name="GameDir" ColumnName="GameDir" />
+                <ScalarProperty Name="RechargeDir" ColumnName="RechargeDir" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="AfterYuanbaoScript" ColumnName="AfterYuanbaoScript" />
+                <ScalarProperty Name="AttachBonus" ColumnName="AttachBonus" />
+                <ScalarProperty Name="ScoreBonus" ColumnName="ScoreBonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_AttachBonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_AttachBonus">
+              <MappingFragment StoreEntitySet="record_AttachBonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cmd" ColumnName="Cmd" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BonusTypeStr" ColumnName="BonusTypeStr" />
+                <ScalarProperty Name="IsCurrency" ColumnName="IsCurrency" />
+                <ScalarProperty Name="ShowMsg" ColumnName="ShowMsg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_BasicBonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_BasicBonus">
+              <MappingFragment StoreEntitySet="record_BasicBonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="PayWayID" ColumnName="PayWayID" />
+                <ScalarProperty Name="BonusStart" ColumnName="BonusStart" />
+                <ScalarProperty Name="BonusPercent" ColumnName="BonusPercent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_CashFlow">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_CashFlow">
+              <MappingFragment StoreEntitySet="record_CashFlow">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="CurrentIncome" ColumnName="CurrentIncome" />
+                <ScalarProperty Name="CurrentBalance" ColumnName="CurrentBalance" />
+                <ScalarProperty Name="RecordType" ColumnName="RecordType" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_CashOutBatch">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_CashOutBatch">
+              <MappingFragment StoreEntitySet="record_CashOutBatch">
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+                <ScalarProperty Name="BatchFee" ColumnName="BatchFee" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="IsAuto" ColumnName="IsAuto" />
+                <ScalarProperty Name="AppliedUserName" ColumnName="AppliedUserName" />
+                <ScalarProperty Name="SubmitedTime" ColumnName="SubmitedTime" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="TargetTypeId" ColumnName="TargetTypeId" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_CashOutOrder">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_CashOutOrder">
+              <MappingFragment StoreEntitySet="record_CashOutOrder">
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="BatchNo" ColumnName="BatchNo" />
+                <ScalarProperty Name="ReceiverEmail" ColumnName="ReceiverEmail" />
+                <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="SuccessTag" ColumnName="SuccessTag" />
+                <ScalarProperty Name="SuccessMsg" ColumnName="SuccessMsg" />
+                <ScalarProperty Name="FailTag" ColumnName="FailTag" />
+                <ScalarProperty Name="FailMsg" ColumnName="FailMsg" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+                <ScalarProperty Name="CompleteTime" ColumnName="CompleteTime" />
+                <ScalarProperty Name="AlipayAccount" ColumnName="AlipayAccount" />
+                <ScalarProperty Name="AlipayRealName" ColumnName="AlipayRealName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_ExBonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_ExBonus">
+              <MappingFragment StoreEntitySet="record_ExBonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Bonus" ColumnName="Bonus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_FloatImg">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_FloatImg">
+              <MappingFragment StoreEntitySet="record_FloatImg">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_GoodsBonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_GoodsBonus">
+              <MappingFragment StoreEntitySet="record_GoodsBonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+                <ScalarProperty Name="GoodsVariableName" ColumnName="GoodsVariableName" />
+                <ScalarProperty Name="CmdName" ColumnName="CmdName" />
+                <ScalarProperty Name="GoodsCount" ColumnName="GoodsCount" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Group">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Group">
+              <MappingFragment StoreEntitySet="record_Group">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RechargeTip" ColumnName="RechargeTip" />
+                <ScalarProperty Name="RechargeLink" ColumnName="RechargeLink" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="IsExpanded" ColumnName="IsExpanded" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Login">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Login">
+              <MappingFragment StoreEntitySet="record_Login">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="ClientIp" ColumnName="ClientIp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Npc">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Npc">
+              <MappingFragment StoreEntitySet="record_Npc">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="Locations" ColumnName="Locations" />
+                <ScalarProperty Name="Num1" ColumnName="Num1" />
+                <ScalarProperty Name="Apperance" ColumnName="Apperance" />
+                <ScalarProperty Name="Num3" ColumnName="Num3" />
+                <ScalarProperty Name="Num4" ColumnName="Num4" />
+                <ScalarProperty Name="Num5" ColumnName="Num5" />
+                <ScalarProperty Name="Num6" ColumnName="Num6" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Operation">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Operation">
+              <MappingFragment StoreEntitySet="record_Operation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GroupNum" ColumnName="GroupNum" />
+                <ScalarProperty Name="OperationTypeId" ColumnName="OperationTypeId" />
+                <ScalarProperty Name="OperationWayId" ColumnName="OperationWayId" />
+                <ScalarProperty Name="ClientIp" ColumnName="ClientIp" />
+                <ScalarProperty Name="SourceLink" ColumnName="SourceLink" />
+                <ScalarProperty Name="ForeignKeyId" ColumnName="ForeignKeyId" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Order">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Order">
+              <MappingFragment StoreEntitySet="record_Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="GoodsName" ColumnName="GoodsName" />
+                <ScalarProperty Name="TotalFee" ColumnName="TotalFee" />
+                <ScalarProperty Name="CanCashOutFee" ColumnName="CanCashOutFee" />
+                <ScalarProperty Name="PayWayID" ColumnName="PayWayID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PaidAccount" ColumnName="PaidAccount" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="PayTime" ColumnName="PayTime" />
+                <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="GameAccount" ColumnName="GameAccount" />
+                <ScalarProperty Name="BuyerQQ" ColumnName="BuyerQQ" />
+                <ScalarProperty Name="BuyerEmail" ColumnName="BuyerEmail" />
+                <ScalarProperty Name="BuyerMobile" ColumnName="BuyerMobile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_OrderItem">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_OrderItem">
+              <MappingFragment StoreEntitySet="record_OrderItem">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="CmdName" ColumnName="CmdName" />
+                <ScalarProperty Name="Count" ColumnName="Count" />
+                <ScalarProperty Name="ItemTypeId" ColumnName="ItemTypeId" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_PlayerMsg">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_PlayerMsg">
+              <MappingFragment StoreEntitySet="record_PlayerMsg">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PlayerID" ColumnName="PlayerID" />
+                <ScalarProperty Name="Msg" ColumnName="Msg" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MsgTypeID" ColumnName="MsgTypeID" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_Refund">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_Refund">
+              <MappingFragment StoreEntitySet="record_Refund">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="RefundOrderNum" ColumnName="RefundOrderNum" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="AcceptTime" ColumnName="AcceptTime" />
+                <ScalarProperty Name="RefundFee" ColumnName="RefundFee" />
+                <ScalarProperty Name="RefundStatus" ColumnName="RefundStatus" />
+                <ScalarProperty Name="FeeArrivalTime" ColumnName="FeeArrivalTime" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="TradeNo" ColumnName="TradeNo" />
+                <ScalarProperty Name="ErrMsg" ColumnName="ErrMsg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_ScoreBonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_ScoreBonus">
+              <MappingFragment StoreEntitySet="record_ScoreBonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="BonusTypeStr" ColumnName="BonusTypeStr" />
+                <ScalarProperty Name="Dir" ColumnName="Dir" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="record_SingleResendOrder">
+            <EntityTypeMapping TypeName="GamePayDBModel.record_SingleResendOrder">
+              <MappingFragment StoreEntitySet="record_SingleResendOrder">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="AreaId" ColumnName="AreaId" />
+                <ScalarProperty Name="PayWayId" ColumnName="PayWayId" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="TotalFee" ColumnName="TotalFee" />
+                <ScalarProperty Name="GameAccount" ColumnName="GameAccount" />
+                <ScalarProperty Name="AddedBy" ColumnName="AddedBy" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RuleInfo" ColumnName="RuleInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_Config">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_Config">
+              <MappingFragment StoreEntitySet="sys_Config">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_ErrorLog">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_ErrorLog">
+              <MappingFragment StoreEntitySet="sys_ErrorLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_LoginWhiteList">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_LoginWhiteList">
+              <MappingFragment StoreEntitySet="sys_LoginWhiteList">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_Menu">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_Menu">
+              <MappingFragment StoreEntitySet="sys_Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="TreeId" ColumnName="TreeId" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="IsAdminMenu" ColumnName="IsAdminMenu" />
+                <ScalarProperty Name="NeedSPwd" ColumnName="NeedSPwd" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ShowOnTop" ColumnName="ShowOnTop" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_MerchantFeeRate">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_MerchantFeeRate">
+              <MappingFragment StoreEntitySet="sys_MerchantFeeRate">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PayWayID" ColumnName="PayWayID" />
+                <ScalarProperty Name="FeeRate" ColumnName="FeeRate" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_PayAccount">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_PayAccount">
+              <MappingFragment StoreEntitySet="sys_PayAccount">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="MerId" ColumnName="MerId" />
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="SellerName" ColumnName="SellerName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_Theme">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_Theme">
+              <MappingFragment StoreEntitySet="sys_Theme">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ThemeType" ColumnName="ThemeType" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="ViewText" ColumnName="ViewText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_User">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_User">
+              <MappingFragment StoreEntitySet="sys_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="SPassword" ColumnName="SPassword" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="RealName" ColumnName="RealName" />
+                <ScalarProperty Name="AlipayAccount" ColumnName="AlipayAccount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AddedTime" ColumnName="AddedTime" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+                <ScalarProperty Name="BankCodeId" ColumnName="BankCodeId" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="BankAccountName" ColumnName="BankAccountName" />
+                <ScalarProperty Name="BankCertId" ColumnName="BankCertId" />
+                <ScalarProperty Name="ManageThemeId" ColumnName="ManageThemeId" />
+                <ScalarProperty Name="RechargeThemeId" ColumnName="RechargeThemeId" />
+                <ScalarProperty Name="BackGroundImgUrl" ColumnName="BackGroundImgUrl" />
+                <ScalarProperty Name="PageSize" ColumnName="PageSize" />
+                <ScalarProperty Name="RequireQQ" ColumnName="RequireQQ" />
+                <ScalarProperty Name="RequireEmail" ColumnName="RequireEmail" />
+                <ScalarProperty Name="RequireMobile" ColumnName="RequireMobile" />
+                <ScalarProperty Name="ShowMsgBoard" ColumnName="ShowMsgBoard" />
+                <ScalarProperty Name="ShowServiceQQ" ColumnName="ShowServiceQQ" />
+                <ScalarProperty Name="ServiceQQ" ColumnName="ServiceQQ" />
+                <ScalarProperty Name="RechargeMsg" ColumnName="RechargeMsg" />
+                <ScalarProperty Name="MinRechargeAmount" ColumnName="MinRechargeAmount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sys_UserAccount">
+            <EntityTypeMapping TypeName="GamePayDBModel.sys_UserAccount">
+              <MappingFragment StoreEntitySet="sys_UserAccount">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TradeCount" ColumnName="TradeCount" />
+                <ScalarProperty Name="TurnOver" ColumnName="TurnOver" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_BankCode">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_BankCode">
+              <MappingFragment StoreEntitySet="type_BankCode">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Bonus">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Bonus">
+              <MappingFragment StoreEntitySet="type_Bonus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_CashOutBatchStatus">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_CashOutBatchStatus">
+              <MappingFragment StoreEntitySet="type_CashOutBatchStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_CashOutTarget">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_CashOutTarget">
+              <MappingFragment StoreEntitySet="type_CashOutTarget">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_CashOutTransWay">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_CashOutTransWay">
+              <MappingFragment StoreEntitySet="type_CashOutTransWay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_CashRecord">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_CashRecord">
+              <MappingFragment StoreEntitySet="type_CashRecord">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Engine">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Engine">
+              <MappingFragment StoreEntitySet="type_Engine">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_FloatHtml">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_FloatHtml">
+              <MappingFragment StoreEntitySet="type_FloatHtml">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Html" ColumnName="Html" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Gateway">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Gateway">
+              <MappingFragment StoreEntitySet="type_Gateway">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="ExePath" ColumnName="ExePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Item">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Item">
+              <MappingFragment StoreEntitySet="type_Item">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Msg">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Msg">
+              <MappingFragment StoreEntitySet="type_Msg">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Operation">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Operation">
+              <MappingFragment StoreEntitySet="type_Operation">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_OperationWay">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_OperationWay">
+              <MappingFragment StoreEntitySet="type_OperationWay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_OrderStatus">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_OrderStatus">
+              <MappingFragment StoreEntitySet="type_OrderStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Pay">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Pay">
+              <MappingFragment StoreEntitySet="type_Pay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_PayWay">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_PayWay">
+              <MappingFragment StoreEntitySet="type_PayWay">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ViewText" ColumnName="ViewText" />
+                <ScalarProperty Name="LinkUrl" ColumnName="LinkUrl" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="FeeRate" ColumnName="FeeRate" />
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="PayTypeId" ColumnName="PayTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_RefundStatus">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_RefundStatus">
+              <MappingFragment StoreEntitySet="type_RefundStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Script">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Script">
+              <MappingFragment StoreEntitySet="type_Script">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mark" ColumnName="Mark" />
+                <ScalarProperty Name="EngineID" ColumnName="EngineID" />
+                <ScalarProperty Name="CommonScript" ColumnName="CommonScript" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="IsAppend" ColumnName="IsAppend" />
+                <ScalarProperty Name="NeedTxtFileToRead" ColumnName="NeedTxtFileToRead" />
+                <ScalarProperty Name="NeedTxtFileToSave" ColumnName="NeedTxtFileToSave" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_UserStatus">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_UserStatus">
+              <MappingFragment StoreEntitySet="type_UserStatus">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_YeepayBankId">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_YeepayBankId">
+              <MappingFragment StoreEntitySet="type_YeepayBankId">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_Order">
+            <EntityTypeMapping TypeName="GamePayDBModel.type_Order">
+              <MappingFragment StoreEntitySet="type_Order">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

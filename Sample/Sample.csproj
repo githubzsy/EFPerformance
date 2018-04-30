@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,11 +50,202 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GamePayDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamePayDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamePayDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GamePayDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GamePayDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="record_AllResendOrder.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Annc.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Area.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_AttachBonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_BasicBonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_CashFlow.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_CashOutBatch.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_CashOutOrder.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_ExBonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_FloatImg.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_GoodsBonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Group.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Login.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Npc.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Operation.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Order.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_OrderItem.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_PlayerMsg.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_Refund.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_ScoreBonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="record_SingleResendOrder.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_Config.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_ErrorLog.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_LoginWhiteList.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_Menu.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_MerchantFeeRate.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_PayAccount.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_Theme.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_User.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_UserAccount.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_BankCode.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Bonus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_CashOutBatchStatus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_CashOutTarget.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_CashOutTransWay.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_CashRecord.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Engine.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_FloatHtml.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Gateway.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Item.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Msg.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Operation.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_OperationWay.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Order.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_OrderStatus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Pay.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_PayWay.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_RefundStatus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_Script.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_UserStatus.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="type_YeepayBankId.cs">
+      <DependentUpon>GamePayDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EntityDeploy Include="GamePayDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GamePayDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GamePayDB.edmx.diagram">
+      <DependentUpon>GamePayDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GamePayDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GamePayDB.Context.cs</LastGenOutput>
+      <DependentUpon>GamePayDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="GamePayDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GamePayDB.edmx</DependentUpon>
+      <LastGenOutput>GamePayDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
